@@ -144,6 +144,6 @@ class MultiEmbeddingFusion(nn.Module):
 
         # 8. Keyword weighting
         fused = self._apply_keyword_weighting(fused, input_ids)
-
+        fused_embedd=self.layer_norm(fused)
         # 9. Layer normalization
-        return self.layer_norm(fused), sec_bert_embeds
+        return self.layer_norm(fused), fused_embedd

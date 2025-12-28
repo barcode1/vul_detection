@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="75ee1619-f607-44da-b4ea-d9ff4b530d65" name="Changes" comment="" />
+    <list default="true" id="75ee1619-f607-44da-b4ea-d9ff4b530d65" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vul_detection.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/hyperparams.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_pipeline/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_pipeline/preprocessor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_pipeline/tokenizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/anomaly_detector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/classifier.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/embedding_layer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/ensemble.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/feature_extractor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/vulnerability_keywords.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test_manual.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/training/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/training/trainer.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 2
@@ -19,10 +49,25 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/BARCODE/Desktop/vul_detection",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\BARCODE\Desktop\vul_detection" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\BARCODE\Desktop\vul_detection" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -38,7 +83,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1766938394117</updated>
-      <workItem from="1766938395188" duration="1000" />
+      <workItem from="1766938395188" duration="1987000" />
     </task>
     <servers />
   </component>
