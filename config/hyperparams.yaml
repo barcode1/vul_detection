@@ -1,0 +1,66 @@
+# ==================== base information ====================
+num_labels: 4
+
+# ==================== data ====================
+data:
+  max_seq_length: 128
+
+# ==================== Sec-BERT (for embedding) ====================
+sec_bert:
+  model_name: "jackaduma/SecBERT"
+  freeze_layers: 7
+
+# ==================== classifire (CodeBERT) ====================
+classification:
+  model_name: "microsoft/codebert-base"
+  freeze_layers: 4
+  learning_rate: 0.0000073
+  weight_decay: 0.01
+  warmup_steps: 500
+  batch_size: 32
+  epochs: 8
+  max_grad_norm: 1.0
+  num_workers: 4
+  pin_memory: False
+
+# ==================== CNN-BiLSTM ====================
+cnn_bilstm:
+  lstm:
+    units: 384
+    dropout: 0.2
+  dropout: 0.2
+
+# ==================== Focal_Loss ====================
+focal_loss:
+  alpha: [0.216, 0.221, 0.310, 0.253]
+  gamma: 2.0
+classifier_dropout: 0.3
+
+# ==================== anomaly_detection ====================
+anomaly_detection:
+  autoencoder:
+    latent_dim: 32
+    learning_rate: 0.001
+    epochs: 50
+  isolation_forest:
+    n_estimators: 200
+    contamination: 0.01
+  anomaly_threshold: 0.5
+
+# ==================== Ensemble ====================
+fusion:
+  weights: [0.6, 0.4]  # [classifier, anomaly]
+  threshold: 0.5
+# ==================== embedding ====================
+embedding:
+  embedding_dim: 300
+  embedding_dropout: 0.2
+  attention_dropout: 0.2
+  keyword_weighting: true
+#===================preprocessing====================
+preprocessing:
+  url_decode: true
+  decode_obfuscation: true
+  preserve_case: true
+
+
