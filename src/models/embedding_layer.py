@@ -20,7 +20,7 @@ class MultiEmbeddingFusion(nn.Module):
             output_hidden_states=True
         )
 
-        # Tokenizer برای استخراج IDs
+        # Tokenizer
         self.tokenizer = AutoTokenizer.from_pretrained(config['sec_bert']['model_name'])
 
         # استخراج token IDs کلمات کلیدی
@@ -50,8 +50,8 @@ class MultiEmbeddingFusion(nn.Module):
         # وزن‌های یادگیرنده برای ترکیب جاسازی‌ها
         self.embedding_weights = nn.Parameter(torch.ones(3) / 3.0)
 
-        # Keyword weighting (یادگیرنده)
-        self.keyword_weights = nn.Parameter(torch.ones(768) * 2.0)  # وزن اولیه 2x
+        # Keyword weighting
+        self.keyword_weights = nn.Parameter(torch.ones(768) * 2.0)
 
         # Layer normalization
         self.layer_norm = nn.LayerNorm(768)

@@ -8,15 +8,15 @@ data:
 # ==================== Sec-BERT (for embedding) ====================
 sec_bert:
   model_name: "jackaduma/SecBERT"
-  freeze_layers: 6
+  freeze_layers: 7
 
 # ==================== classifire (CodeBERT) ====================
 classification:
   model_name: "microsoft/codebert-base"
   freeze_layers: 4
-  learning_rate: 0.00000032
+  learning_rate: 0.0000065
   weight_decay: 0.01
-  warmup_steps: 500
+  warmup_steps: 1000
   batch_size: 32
   epochs: 10
   max_grad_norm: 1.0
@@ -28,12 +28,12 @@ cnn_bilstm:
   lstm:
     units: 384
     dropout: 0.2
-  dropout: 0.2
+  dropout: 0.3
 
 # ==================== Focal_Loss ====================
 focal_loss:
   alpha: [0.216, 0.221, 0.310, 0.253]
-  gamma: 1.5
+  gamma: 2.0
 classifier_dropout: 0.2
 
 # ==================== anomaly_detection ====================
