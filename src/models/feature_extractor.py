@@ -13,7 +13,7 @@ class CNNBiLSTMFeatureExtractor(nn.Module):
         super().__init__()
 
         self.hidden_dim = config['cnn_bilstm']['lstm']['units']
-        self.dropout_rate = config.get('dropout', 0.3)
+        self.dropout_rate = config.get('dropout', 0.2)
 
         # CNN multi-scale
         self.conv1 = nn.Conv1d(768, 256, kernel_size=3, padding=1, bias=False)
