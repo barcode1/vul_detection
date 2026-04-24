@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="75ee1619-f607-44da-b4ea-d9ff4b530d65" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/embedding_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/embedding_layer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/feature_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/feature_extractor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +75,7 @@
       <workItem from="1770541246435" duration="1466000" />
       <workItem from="1772188185961" duration="10000" />
       <workItem from="1777039318846" duration="77000" />
+      <workItem from="1777039890614" duration="633000" />
     </task>
     <servers />
   </component>
