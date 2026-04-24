@@ -6,7 +6,7 @@ from typing import Tuple, Dict, Any
 
 class CNNBiLSTMFeatureExtractor(nn.Module):
     """
-    استخراج ویژگی‌های پیشرفته با CNN multi-scale + BiLSTM + Self-Attention
+     CNN multi-scale + BiLSTM + Self-Attention
     """
 
     def __init__(self, config: Dict[str, Any]):
@@ -64,7 +64,7 @@ class CNNBiLSTMFeatureExtractor(nn.Module):
         x = torch.cat([x1, x2, x3], dim=1).transpose(1, 2)  # [batch, seq_len, 1280]
 
         # BiLSTM
-        lstm_out, _ = self.bilstm(x)  # [batch, seq_len, 512]
+        lstm_out, _ = self.bilstm(x)  # [batch, seq_len, 768]
 
         # Self-Attention pooling
         attn_out, weights = self.self_attention(lstm_out, lstm_out, lstm_out)

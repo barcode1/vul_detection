@@ -8,7 +8,7 @@ data:
 # ==================== Sec-BERT (for embedding) ====================
 sec_bert:
   model_name: "jackaduma/SecBERT"
-  freeze_layers: 7
+  freeze_layers: 5
 
 # ==================== classifire (CodeBERT) ====================
 classification:
@@ -18,7 +18,7 @@ classification:
   weight_decay: 0.01
   warmup_steps: 1000
   batch_size: 32
-  epochs: 10
+  epochs: 5
   max_grad_norm: 1.0
   num_workers: 4
   pin_memory: False
@@ -49,7 +49,7 @@ anomaly_detection:
 
 # ==================== Ensemble ====================
 fusion:
-  weights: [0.6, 0.4]  # [classifier, anomaly]
+  weights: [0.8, 0.2]  # [classifier, anomaly]
   threshold: 0.5
 # ==================== embedding ====================
 embedding:

@@ -5,7 +5,7 @@ from typing import Dict, Any, Tuple
 import sys
 import os
 
-# اضافه کردن مسیر برای import
+# Add path for import
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from src.models.vulnerability_keywords import VULNERABILITY_KEYWORDS
 
@@ -23,7 +23,7 @@ class MultiEmbeddingFusion(nn.Module):
         # Tokenizer
         self.tokenizer = AutoTokenizer.from_pretrained(config['sec_bert']['model_name'])
 
-        # استخراج token IDs کلمات کلیدی
+        # extract token IDs
         self.keyword_ids = self._extract_keyword_ids()
 
         # Projection layers
@@ -47,7 +47,7 @@ class MultiEmbeddingFusion(nn.Module):
             batch_first=True
         )
 
-        # وزن‌های یادگیرنده برای ترکیب جاسازی‌ها
+        # Learner weights for combining embeddings
         self.embedding_weights = nn.Parameter(torch.ones(3) / 3.0)
 
         # Keyword weighting
@@ -57,7 +57,7 @@ class MultiEmbeddingFusion(nn.Module):
         self.layer_norm = nn.LayerNorm(768)
 
         # Freeze early layers
-        self._freeze_layers(config.get('freeze_layers', 8))
+        self._freeze_layers(config.get('freeze_layers', 7))
 
     def _freeze_layers(self, num_layers: int):
         for param in self.sec_bert.embeddings.parameters():
@@ -67,19 +67,19 @@ class MultiEmbeddingFusion(nn.Module):
                 param.requires_grad = False
 
     def _extract_keyword_ids(self) -> torch.Tensor:
-        """استخراج token IDs تمام کلمات کلیدی"""
+        """Extract token IDs of all keywords"""
         all_keywords = []
         for category in VULNERABILITY_KEYWORDS.values():
             all_keywords.extend(category)
 
-        # Tokenize هر کلمه
+        # Tokenize each word
         token_ids = []
         for word in all_keywords:
-            # هر کلمه ممکن چند توکن داشته باشد
+            # Each word may have multiple tokens.
             tokens = self.tokenizer.encode(word, add_special_tokens=False)
             token_ids.extend(tokens)
 
-        # حذف تکراری‌ها
+        # Remove duplicates
         unique_ids = list(set(token_ids))
 
         return torch.tensor(unique_ids, dtype=torch.long)
@@ -87,31 +87,31 @@ class MultiEmbeddingFusion(nn.Module):
     def _apply_keyword_weighting(self, embeddings: torch.Tensor,
                                  input_ids: torch.Tensor) -> torch.Tensor:
         """
-        وزن‌دهی به کلمات کلیدی مخرب
+        Weighting malicious keywords
         embeddings: [batch, seq_len, 768]
         input_ids: [batch, seq_len]
         """
-        # 1. ماسک boolean: کجا کلمه کلیدی است
+        # 1. boolean mask: where is the keyword
         mask = torch.isin(input_ids, self.keyword_ids.to(input_ids.device))
         # mask: [batch, seq_len]
 
-        # 2. گستراندن ماسک به shape embeddings
+        # 2. Extending the mask to shape embeddings
         mask_expanded = mask.unsqueeze(-1).expand_as(embeddings)
         # mask_expanded: [batch, seq_len, 768]
 
-        # 3. وزن پایه (۱) برای همه جا
+        # 3. Base weight (1) for all places
         weights = torch.ones_like(embeddings)
 
-        # 4. وزن کلیدی (یادگیرنده) و broadcast
+        # 4. Key weight (learner) and broadcast
         weight_factor = self.keyword_weights.sigmoid() * 2.0  # [768]
         weight_factor_broadcasted = weight_factor.view(1, 1, -1).expand_as(embeddings)
         # weight_factor_broadcasted: [batch, seq_len, 768]
 
-        # 5. جایی که mask=True، وزن کلیدی را اعمال کن
+        # 5. Where mask=True, apply key weight
         weights = torch.where(mask_expanded, weight_factor_broadcasted, weights)
         # where(condition, value_if_true, value_if_false)
 
-        # 6. ضرب در embeddings
+        # 6. Multiplication in embeddings
         return embeddings * weights
 
     def forward(self, input_ids: torch.Tensor, attention_mask: torch.Tensor,
