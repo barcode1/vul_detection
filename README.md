@@ -11,3 +11,5 @@ This is a pipeline model with the following model architecture:
 4- The output of the previous stage is applied to two anomaly detection branches for detecting unknown zero-day vulnerabilities and the Codebert classifire branch as input to the branches.
 
 5- In the last stage, an output is generated using the model ensemble and calculating the probability of each branch.
+
+6- Testing in other LLMs in future.
